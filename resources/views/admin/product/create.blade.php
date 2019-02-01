@@ -42,16 +42,26 @@
              </div>
            </div>
          </div>
+
+      <div class="card">
+        <div class="body">
+          <div class="form-group{{ $errors->has('Short Description') ? ' has-error' : '' }}">
+              {!! Form::label('Short Description', 'Short Description') !!}
+              {!! Form::textarea('short_description', null, ['class' => 'summernote form-control', 'placeholder' => 'Short Description']) !!}
+              <small class="text-danger">{{ $errors->first('short_description') }}</small>
+          </div>
+        </div>
+      </div>
          <div class="card">
            <div class="body">
 
-             <div class="form-group{{ $errors->has('meta_title') ? ' has-error' : '' }}">
+             <div class="form-group {{ $errors->has('meta_title') ? ' has-error' : '' }}">
                  {!! Form::label('meta_title', 'Meta Title') !!}
                  {!! Form::text('meta_title', null, ['class' => 'form-control', 'placeholder' => 'Meta Title']) !!}
                  <small class="text-danger">{{ $errors->first('meta_title') }}</small>
              </div>
 
-             <div class="form-group{{ $errors->has('meta_description') ? ' has-error' : '' }}">
+             <div class="form-group {{ $errors->has('meta_description') ? ' has-error' : '' }}">
                  {!! Form::label('meta_description', 'Meta Description') !!}
                  {!! Form::textarea('meta_description', null, ['class' => 'form-control', 'placeholder' => 'Meta Description']) !!}
                  <small class="text-danger">{{ $errors->first('meta_description') }}</small>
@@ -75,14 +85,26 @@
               <small class="text-danger">{{ $errors->first('status') }}</small>
           </div>
 
-           {!! Form::submit('Add Category', ['class' => 'btn btn-info']) !!}
+          <div class="form-group {{ $errors->has('sku') ? ' has-error' : '' }}">
+              {!! Form::label('sku', 'SKU') !!}
+              {!! Form::text('sku', null, ['class' => 'form-control', 'required' => 'required']) !!}
+              <small class="text-danger">{{ $errors->first('sku') }}</small>
+          </div>
+
+          <div class="form-group{{ $errors->has('Stock') ? ' has-error' : '' }}">
+              {!! Form::label('Stock', 'Stock') !!}
+              {!! Form::text('stock', null, ['class' => 'form-control', 'required' => 'required']) !!}
+              <small class="text-danger">{{ $errors->first('Stock') }}</small>
+          </div>
+
+           
 
         </div>
       </div>
 
       <div class="card">
         <div class="body">
-          <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
+          <div class="form-group {{ $errors->has('category') ? ' has-error' : '' }}">
               {!! Form::label('category', 'Category') !!}
               {!! Form::select('category', App\Model\Admin\Category::pluck('name','id'), null, ['id' => 'category', 'class' => 'form-control select2 select2-hidden-accessible', 'required' => 'required', 'multiple','data-placeholder'=>"Select a Category"]) !!}
               <small class="text-danger">{{ $errors->first('category') }}</small>
@@ -92,12 +114,24 @@
 
       <div class="card">
         <div class="body">
-          <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-              {!! Form::label('category', 'Category') !!}
-              {!! Form::select('category', App\Model\Admin\Category::pluck('name','id'), null, ['id' => 'category', 'class' => 'form-control select2 select2-hidden-accessible', 'required' => 'required', 'multiple','data-placeholder'=>"Select a Category"]) !!}
-              <small class="text-danger">{{ $errors->first('category') }}</small>
+          <div class="form-group {{ $errors->has('mrp') ? ' has-error' : '' }}">
+              {!! Form::label('mrp', 'MRP') !!}
+              {!! Form::text('mrp', null, ['class' => 'form-control', 'required' => 'required']) !!}
+              <small class="text-danger">{{ $errors->first('mrp') }}</small>
+          </div>
+
+          <div class="form-group {{ $errors->has('msp') ? ' has-error' : '' }}">
+              {!! Form::label('msp', 'MSP') !!}
+              {!! Form::text('msp', null, ['class' => 'form-control', 'required' => 'required']) !!}
+              <small class="text-danger">{{ $errors->first('msp') }}</small>
           </div>
         </div>
+      </div>
+
+      <div class="card">
+        <div class="body">
+      {!! Form::submit('Add Product', ['class' => 'btn btn-info']) !!}
+    </div>
       </div>
 
       <div class="card">
@@ -109,7 +143,7 @@
         </div>
       </div>
     </div>
-
+ 
     </div>
     {!! Form::close() !!}
   </div>
